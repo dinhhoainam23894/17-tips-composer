@@ -2,10 +2,10 @@
 
 Mặc dù hầu hết những nhà phát triển về php đều biết cách sử dụng Composer,nhưng không phải tất cả họ biết cách sử dụng hiệu quả hoặc theo cách chuẩn nhất,Vì vậy, tôi đã quyết định tóm tắt những thứ quan trọng cho công việc hàng ngày của mình.
 
-Triết lý của hầu hết các mẹo là "Chơi an toàn", có nghĩa là nếu có nhiều cách hơn để xử lý một cái gì đó, tôi sẽ sử dụng cách tiếp cận ít bị lỗi nhất.
+Triết lý của hầu hết các mẹo là "Chơi an toàn", có nghĩa là nếu có nhiều cách để xử lý một cái gì đó, tôi sẽ sử dụng cách tiếp cận ít bị lỗi nhất.
 
 ## Mẹo 1: Đọc từ trang tài liệu
-Đó là điều mà tôi thực sự nghĩ tới , Trang tài liệu rất tuyệt và chỉ mất một vài giờ để đọc nó  sẽ giúp bạn tiết kiệm đc 1 khoảng thời gian kha khá. Bạn sẽ rất ngạc nhiên về một vài thứ Composer có thể làm.
+Tôi thật sự khuyên các bạn nên làm vậy, Trang tài liệu rất tuyệt và chỉ mất một vài giờ để đọc nó  sẽ giúp bạn tiết kiệm đc 1 khoảng thời gian kha khá. Bạn sẽ rất ngạc nhiên về một vài thứ Composer có thể làm.
 
 ## Mẹo 2 : Hãy phân biệt sự khác nhau giữa 1 "project" và một "thư viện".
 Đó là điều quan trọng phải biết,cho dù bạn tạo 1 project hay một thư viện.Mỗi loại sẽ yêu cầu những bài thực hành riêng biệt.
@@ -16,12 +16,12 @@ Project thì thường là một ứng dụng,bị phụ thuộc vào một số
 
 Tôi sẽ chỉ cách phân biệt giữa thư viện và một project ở mẹo dưới đây.
 
-## Mẹo 3 : sử dụng các phiên bản phụ thuộc dành cho ứng dụng.
+## Mẹo 3 : sử dụng các phiên bản dependency cụ thể dành cho ứng dụng.
 Nếu bạn khởi tạo một ứng dụng , bện nên sử dụng  phiên bản cụ thể nhất để định danh các phụ thuộc.Nếu bạn cần phân tích tệp YAML,bạn nên chỉ định các phụ thuộc như "symfony/yaml": "4.0.2".
 
-Ngay cả khi thư tiện tuân theo Semantic Versioning , có thể sẽ có sự  phá vỡ các tương thích ở trong bản phụ hoặc bản vá.Ví dụ , nêu bạn đang sử dụng "symfony/symfony" : "^3.1" , có thể sẽ có vài thứ không được sử dụng nữa trong bản 3.2 và các bản test trong ứng dụng của bạn sẽ gặp lỗi.Hoặc một số các lỗi đã được sửa trong PHP_CodeSniffer và nó sẽ phát hiện các vấn đề về định dạng mới trong code của bạn, điều này có thể dẫn đến một bản code bị hỏng khi dựng lên.
+Ngay cả khi thư viện tuân theo Semantic Versioning , có thể sẽ có sự  phá vỡ các tương thích ở trong bản phụ hoặc bản vá.Ví dụ , nêu bạn đang sử dụng "symfony/symfony" : "^3.1" , có thể sẽ có vài thứ không được sử dụng nữa trong bản 3.2 và các bản test trong ứng dụng của bạn sẽ gặp lỗi.Hoặc một số các lỗi đã được sửa trong PHP_CodeSniffer và nó sẽ phát hiện các vấn đề về định dạng mới trong code của bạn, điều này có thể dẫn đến một bản code bị hỏng khi dựng lên.
 
-Việc cập nhật các phụ thuộc nên được cân nhắc, không phải ngẫu nhiên. Một trong những lời khuyên dưới đây sẽ là rõ vấn đề này hơn.
+Việc cập nhật các phụ thuộc nên được cân nhắc, không phải ngẫu nhiên. Một trong những lời khuyên dưới đây sẽ làm rõ vấn đề này hơn.
 
 Nghe thì có vẻ là hơi quá lên , nhưng nó sẽ ngăn các đồng nghiệp của bạn vô tình cập nhật tất cả các phụ thuộc khi thêm một thư viện mới vào dự án (mà bạn có thể bỏ lỡ trong khi xem xét code).
 
@@ -85,7 +85,7 @@ Mặc dù giải pháp này sẽ bắt được hầu hết các bản không t�
 
 ## Mẹo 8: Sắp xếp các package trong require và require-dev theo tên
 
-Một thói quen tốt là sắp xếp các package trong `require` và` require-dev` theo tên. Điều này có thể ngăn ngừa những merge conflict không cần thiết khi rebase một nhánh. Bởi nếu bạn đã thêm một package vào cuối danh sách trong hai branch,
+Một thói quen tốt là sắp xếp các package trong `require` và` require-dev` theo tên. Điều này có thể ngăn ngừa những merge conflict (nh không cần thiết khi rebase một nhánh. Bởi nếu bạn đã thêm một package vào cuối danh sách trong hai branch,
 sẽ có luôn có xung đột khi merge.
 
 Đây là một công việc nhàm chán khi phải làm thủ công, vì vậy tốt nhất là [cấu hình nó] (https://getcomposer.org/doc/06-config.md#sort-packages) trong
