@@ -17,7 +17,7 @@ Project thì thường là một ứng dụng,bị phụ thuộc vào một số
 Tôi sẽ chỉ cách phân biệt giữa thư viện và một project ở mẹo dưới đây.
 
 ## Mẹo 3 : sử dụng các phiên bản phụ thuộc dành cho ứng dụng.
-Nếu bạn khởi tạo một ứng dụng , bện nên sử dụng  phiên bản cụ thể nhất để định danh các phụ thuộc.Nếu bạn cần phân tích tệp YAML,bạn nên chỉ định các phụ thuộc như "symfony/yaml": "4.0.2".
+Nếu bạn khởi tạo một ứng dụng , bạn nên sử dụng  phiên bản cụ thể nhất để định danh các phụ thuộc.Nếu bạn cần phân tích tệp YAML,bạn nên chỉ định các phụ thuộc như "symfony/yaml": "4.0.2".
 
 Ngay cả khi thư tiện tuân theo Semantic Versioning , có thể sẽ có sự  phá vỡ các tương thích ở trong bản phụ hoặc bản vá.Ví dụ , nêu bạn đang sử dụng "symfony/symfony" : "^3.1" , có thể sẽ có vài thứ không được sử dụng nữa trong bản 3.2 và các bản test trong ứng dụng của bạn sẽ gặp lỗi.Hoặc một số các lỗi đã được sửa trong PHP_CodeSniffer và nó sẽ phát hiện các vấn đề về định dạng mới trong code của bạn, điều này có thể dẫn đến một bản code bị hỏng khi dựng lên.
 
@@ -127,9 +127,9 @@ dependency tại phần này cũng là dependency của ứng dụng mà sử d�
 
 Các package cần thiết để phát triển ứng dụng (hoặc thư viện) nên được định nghĩa trong `require-dev` (ví dụ: PHPUnit, PHP_CodeSniffer, PHPStan).
 
-## Mẹo 11: Update dependency một cách an toàn
+## Mẹo 11: Cập nhật phụ thuộc một cách an toàn
 
-Tôi cho rằng chúng ta có thể nhất trí về việc các dependency nên được update thường xuyên. Những gì tôi muốn thảo luận ở đây là việc update các dependency nên được thực hiện một cách rõ ràng và thận trọng. Không nên thực hiện nó theo kiểu "tiện thể thì làm" kèm với các công việc khác. Nếu bạn sửa đổi một cái gì đó và đồng thời cập nhật một số thư viện, bạn không thể dễ dàng
+Tôi cho rằng chúng ta có thể nhất trí về việc các dependency nên được cập nhật thường xuyên. Những gì tôi muốn thảo luận ở đây là việc cập nhật các dependency nên được thực hiện một cách rõ ràng và thận trọng. Không nên thực hiện nó theo kiểu "tiện thể thì làm" kèm với các công việc khác. Nếu bạn sửa đổi một cái gì đó và đồng thời cập nhật một số thư viện, bạn không thể dễ dàng
 biết được liệu ứng dụng đã bị hỏng do bạn sửa đổi hay do việc cập nhật đã gây nên.
 
 Bạn có thể sử dụng lệnh `composer outdated` để xem dependency nào có thể
@@ -194,7 +194,7 @@ support). Khi ta sửa `composer.json` bằng tay, autocompletion và một vài
 
 Nếu bạn đang sử dụng IDE khác (hoặc chỉ là một trình soạn thảo code), bạn có thể thiết lập validation đối với [JSON schema của nó] (https://getcomposer.org/schema.json).
 
-## Mẹo 15: Chỉ rõ phiên bản PHP production trong `composer.json`
+## Mẹo 15: Chỉ rõ phiên bản PHP cho production trong `composer.json`
 
 Nếu bạn giống tôi và đôi khi bạn [chạy các phiên bản PHP tiền phát hành ở local] (https://blog.martinhujer.cz/php-7-2-is-due-in-november-whats-new/),
 bạn sẽ có nguy cơ cập nhật các dependency tới phiên bản mà sẽ không hoạt động trong production. Ngay lúc này, tôi đang sử dụng PHP 7.2.0, có nghĩa rằng tôi có thể cài đặt thư viện mà không hoạt động trên 7.1. Khi production chạy 7.1,
@@ -219,7 +219,7 @@ Nhưng không cần phải lo lắng, có một cách dễ dàng để giải qu
         }
     },
     
-## Mẹo 16: Sử dụng các package private từ  self-hosted Gitlab 
+## Mẹo 16: Sử dụng các package private từ  chính Gitlab lưu trữ
 
 Chúng tôi khuyên bạn nên sử dụng `vcs` làm kiểu của repository và Composer nên xác định cách phù hợp để fetch các package. Ví dụ, nếu bạn thêm một fork từ Github, nó sẽ sử dụng API của nó để tải file .zip thay vì clone toàn bộ repo.
 
@@ -242,7 +242,7 @@ Sau đó sử dụng package như bình thường:
         "package-namespace/package-name": "1.0.0"
     }
 
-## Mẹo 17: Làm sao để tạm thời sử dụng một branch với bugfix từ fork
+## Mẹo 17: Làm sao để sử dụng tạm thời một branch với bugfix từ fork
 
 Nếu bạn tìm thấy bug trong một số thư viện public và bạn sửa nó trong fork của bạn trên Github, bạn cần phải cài đặt thư viện từ repo này thay vì từ repo chính gốc (hoặc trừ khi lỗi bug được sửa và merge và phiên bản đã sửa được phát hành).
 
